@@ -1,4 +1,4 @@
-#include "MainComponent.h"
+﻿#include "MainComponent.h"
 
 MainComponent::MainComponent()
 {
@@ -23,6 +23,7 @@ MainComponent::MainComponent()
             else if (action == "stop") playerAudio.stop();
             else if (action == "start") playerAudio.goToStart();
             else if (action == "end")  playerAudio.goToEnd();
+            else if (action == "mute") playerAudio.mute();
         };
 
     playerGUI.onVolumeChanged = [this](float value)
@@ -30,7 +31,7 @@ MainComponent::MainComponent()
             playerAudio.setGain(value);
         };
 
-    setSize(500, 250);
+    setSize(560, 300);
     setAudioChannels(0, 2);
 }
 

@@ -19,11 +19,12 @@ public:
 
 private:
     juce::TextButton loadButton{ "Load" };
-    juce::TextButton playButton{juce::String::fromUTF8("\xE2\x96\xB6")};
+    juce::TextButton playButton{ juce::String::fromUTF8("\xE2\x96\xB6") };
     juce::TextButton pauseButton{ "||" };
-    juce::TextButton startButton{ "|"+ juce::String::fromUTF8("\xE2\x97\x80")};
-    juce::TextButton endButton{ juce::String::fromUTF8("\xE2\x96\xB6")+"|"};
-    juce::TextButton stopButton{ "Stop" };
+    juce::TextButton startButton{ "|" + juce::String::fromUTF8("\xE2\x97\x80") };
+    juce::TextButton endButton{ juce::String::fromUTF8("\xE2\x96\xB6") + "|" };
+    juce::TextButton stopButton{ juce::String::fromUTF8("\xE2\xAC\x9B") };
+    juce::TextButton muteButton{ juce::String::fromUTF8("\xF0\x9F\x94\x88") + "X"};
     juce::Slider volumeSlider;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlayerGUI)

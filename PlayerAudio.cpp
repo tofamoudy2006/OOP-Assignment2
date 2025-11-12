@@ -14,6 +14,11 @@ void PlayerAudio::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 
 void PlayerAudio::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
+    if (transportSource.getLengthInSeconds() - transportSource.getCurrentPosition() <= 1.0001) {
+        transportSource.setPosition(0.0);
+        transportSource.start();
+    }
+    else
     transportSource.getNextAudioBlock(bufferToFill);
 }
 
@@ -31,7 +36,7 @@ void PlayerAudio::loadFile(const juce::File& file)
     }
 }
 
-void PlayerAudio::play() { transportSource.start(); }
+void PlayerAudio::play() { transportSource.start();}
 void PlayerAudio::pause() { transportSource.stop(); }
 void PlayerAudio::stop() { transportSource.stop(); transportSource.setPosition(0.0); }
 void PlayerAudio::goToStart() { transportSource.setPosition(0.0); }
@@ -44,4 +49,15 @@ void PlayerAudio::goToEnd()
 void PlayerAudio::setGain(float gain)
 {
     transportSource.setGain(gain);
+}
+void PlayerAudio::mute() {
+    if (! isMuted) {
+        previousGain = transportSource.getGain();
+        transportSource.setGain(0.0f);
+        isMuted = true;
+    }
+    else {
+        transportSource.setGain(previousGain);
+        isMuted = false;
+    }
 }

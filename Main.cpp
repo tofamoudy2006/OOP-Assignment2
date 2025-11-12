@@ -1,3 +1,5 @@
+//https://github.com/tofamoudy2006/OOP-Assignment2.git
+
 #include <JuceHeader.h>
 #include "MainComponent.h"
 
@@ -23,7 +25,7 @@ private:
         {
             setUsingNativeTitleBar(true);
             setContentOwned(new MainComponent(), true);
-            centreWithSize(500, 250);
+            centreWithSize(560, 300);
             setVisible(true);
         }
 

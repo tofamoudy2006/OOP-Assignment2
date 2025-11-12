@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <JuceHeader.h>
 
 class PlayerAudio
@@ -17,9 +17,11 @@ public:
     void stop();
     void goToStart();
     void goToEnd();
+    float previousGain = 1.0f;
+    bool isMuted = false;
     void setGain(float gain);
-
-private:
+    void mute();
+ private:
     juce::AudioFormatManager formatManager;
     std::unique_ptr<juce::AudioFormatReaderSource> readerSource;
     juce::AudioTransportSource transportSource;
